@@ -3,7 +3,7 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
 import base64
-from cStringIO import StringIO
+from io import StringIO
 from lxml import etree
 import logging
 import os

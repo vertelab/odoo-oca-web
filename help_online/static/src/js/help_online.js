@@ -4,7 +4,7 @@ odoo.define('oca.HelpOnline', function (require) {
     var core = require('web.core');
     var QWeb = core.qweb;
     var _t = core._t;
-    var ViewManager = require('web.ViewManager');
+    var BasicController = require('web.BasicController');
     var ControlPanel = require('web.ControlPanel');
     var Dialog = require('web.Dialog');
 
@@ -19,7 +19,7 @@ odoo.define('oca.HelpOnline', function (require) {
         },
     });
 
-    ViewManager.include({
+    BasicController.include({
 
         /**
          * This function render the help button with the informations received
@@ -66,7 +66,7 @@ odoo.define('oca.HelpOnline', function (require) {
                 control_elements.$help_online_buttons = $('<div/>'); 
             }
             var self = this;
-            this.rpc('/help_online/build_url', {model: this.dataset.model, view_type: this.active_view.type}).then(function(result) {
+            this._rpc({model: 'help.online', method: 'get_page_url', args: [this.modelName, this.viewType]}).then(function(result) {
                 if (result && ! _.isEmpty(result)) {
                     var $helpButton =  self.render_help_button(result);
                     control_elements.$help_online_buttons = $helpButton;
@@ -76,7 +76,7 @@ odoo.define('oca.HelpOnline', function (require) {
             });
         },
 
-        render_view_control_elements: function() {
+        _renderControlPanelElements: function() {
             var control_elements = this._super.apply(this, arguments);
             this.render_help_buttons(control_elements);
             return control_elements;

@@ -14,10 +14,7 @@
     </t>
 
     <t t-extend="ControlPanel">
-        <t t-jquery="div.o_cp_switch_buttons" t-operation="after">
-            <t t-call='HelpOnline.ButtonsContainer' />
-        </t>
-        <t t-jquery="div.oe-cp-switch-buttons" t-operation="after">
+        <t t-jquery="nav.o_cp_switch_buttons" t-operation="after">
             <t t-call='HelpOnline.ButtonsContainer' />
         </t>
     </t>
@@ -26,11 +23,5 @@
         <t t-jquery="div.o_cp_pager" t-operation="after">
             <t t-call='HelpOnline.ButtonsContainer' />
         </t>
-        <t t-jquery="div.oe-cp-pager" t-operation="after">
-            <div class="pull-right">
-                <t t-call='HelpOnline.ButtonsContainer' />
-            </div>
-        </t>
     </t>
-
 </templates>

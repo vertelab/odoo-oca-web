@@ -2,7 +2,7 @@
 # Copyright 2014 ACSONE SA/NV (<http://acsone.eu>)
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
-from odoo import models, exceptions
+from odoo import models, exceptions, api
 from odoo.tools.translate import _
 
 
@@ -22,6 +22,7 @@ class HelpOnline(models.TransientModel):
         website = self.env['website']
         return website.search_pages(needle=name, limit=limit)
 
+    @api.model
     def get_page_url(self, model, view_type, domain=None, context=None):
         user_model = self.env['res.users']
         if not user_model.has_group('help_online.help_online_group_reader'):

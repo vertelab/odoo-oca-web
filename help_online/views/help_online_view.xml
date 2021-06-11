@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <template id="assets_backend" name="help.online.assets" inherit_id="web.assets_backend">
+    <template id="assets_backend" name="Help Online Assets Backend" inherit_id="web.assets_backend">
         <xpath expr="." position="inside">
-            <link rel="stylesheet" href="/help_online/static/src/css/help_online.css" type="text/css"/>
+            <link rel="stylesheet" type="text/css" href="/help_online/static/src/css/help_online.css" />
             <script type="text/javascript" src="/help_online/static/src/js/help_online.js"></script>
         </xpath>
     </template>
@@ -11,7 +11,6 @@
         <field name="name">Website Pages</field>
         <field name="res_model">ir.ui.view</field>
         <field name="search_view_id" ref="view_view_search" />
-        <field name="view_type">form</field>
         <field name="view_mode">tree,form</field>
         <field name="context">{"search_default_website":1}</field>
     </record>

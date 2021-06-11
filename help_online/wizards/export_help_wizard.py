@@ -290,7 +290,7 @@ class ExportHelpWizard(models.TransientModel):
             })
             return module + '.' + name
 
-    @api.multi
+    # @api.multi
     def export_help(self):
         """
         Export all Qweb views related to help online in a Odoo

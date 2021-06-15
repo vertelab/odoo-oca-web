@@ -4,10 +4,10 @@
 
 {
     'name': 'Help Online',
-    'version': '10.0.1.0.0',
+    'version': '14.0.1.0.0',
     'author': "ACSONE SA/NV,Odoo Community Association (OCA)",
-    'maintainer': 'ACSONE SA/NV',
-    'website': 'http://www.acsone.eu',
+    'maintainer': 'Vertel AB',
+    'website': 'vertel.se',
     'license': 'AGPL-3',
     'category': 'Documentation',
     'depends': [

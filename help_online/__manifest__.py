@@ -14,6 +14,7 @@
         'website',
     ],
     'data': [
+        'security/ir.model.access.csv',
         'security/help_online_groups.xml',
         'security/help_online_rules.xml',
         'wizards/export_help_wizard_view.xml',

@@ -11,6 +11,52 @@
         </field>
     </record>
 
+    <record id="view_view_form" model="ir.ui.view">
+        <field name="name">ir.ui.view form (help_online)</field>
+        <field name="inherit_id" ref="base.view_view_form"/>
+        <field name="model">ir.ui.view</field>
+        <field name="arch" type="xml">
+            <field name="xml_id" position="after">
+                <field name="is_documentation"/>
+            </field>
+            <button name="redirect_to_page_manager" position="after">
+                <button name="export_documentation" class="btn btn-primary" string="Export" type="object"/>
+            </button>
+        </field>
+    </record>
+
+    <record id="export_doc_action_server" model="ir.actions.server">
+        <field name="name">Export Documentation</field>
+        <field name="type">ir.actions.server</field>
+        <field name="model_id" ref="model_ir_ui_view"/>
+        <field name="binding_model_id" ref="model_ir_ui_view"/>
+        <field name="binding_view_types">list,form</field>
+        <field name="state">code</field>
+        <field name="code">
+if records:
+    action = records.export_documentation()
+        </field>
+    </record>
+
+    <record id="view_attachment_simplified_form" model="ir.ui.view">
+        <field name="name">ir.attachment.simplified.form</field>
+        <field name="model">ir.attachment</field>
+        <field name="priority" eval="25" />
+        <field name="arch" type="xml">
+            <form string="Attachments">
+                <sheet>
+                    <label for="name" class="oe_edit_only" />
+                    <h1>
+                        <field name="name" />
+                    </h1>
+                    <group name="main">
+                        <field name="datas" filename="name" string="Generated File" />
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
 <!--
     <record id="view_view_form" model="ir.ui.view">
         <field name="name">ir.ui.view form (help_online)</field>

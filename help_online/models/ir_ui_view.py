@@ -1,8 +1,6 @@
 from odoo import fields, models, api, _
 import base64
 from lxml import etree
-# from xml.etree import ElementTree
-import pprint
 
 
 class IrUIView(models.Model):
@@ -20,6 +18,8 @@ class IrUIView(models.Model):
 
     def export_documentation(self):
         active_ids = self.env.context.get('active_ids', [])
+        if not active_ids:
+            active_ids = self.id
         view_ids = self.env['ir.ui.view'].browse(active_ids)
 
         root = etree.Element("odoo")

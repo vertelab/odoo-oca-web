@@ -247,7 +247,7 @@ msgstr "Lyckas ej skriva autobackup-filen i den angivna katalogen: %s"
 #. module: help_online
 #: model:ir.model,name:help_online.model_ir_ui_view
 msgid "View"
-msgstr "Visa"
+msgstr "Vy"
 
 #. module: help_online
 #: model_terms:ir.ui.view,arch_db:help_online.view_view_search

@@ -35,10 +35,13 @@ odoo.define("web_pivot_computed_measure.PivotController", function(require) {
          * @override
          */
         renderButtons: function($node) {
+            console.log("RENDER BUTTON MARCUS OVERIDE")
+            console.log($node)
             this._super.apply(this, arguments);
-            if ($node) {
-                this._renderComputedMeasures();
-            }
+            //~ if ($node) {
+            console.log("RENDER BUTTON MARCUS IF CASE")
+            this._renderComputedMeasures();
+            //~ }
         },
 
         /**
@@ -48,17 +51,20 @@ odoo.define("web_pivot_computed_measure.PivotController", function(require) {
          */
         _onButtonClick: function(event) {
             const $target = $(event.target);
+            console.log("_ONBUTTONCLICK MARCUS1")
             if ($target.parents("div[data-id='__computed__']").length) {
                 let hideMenu = false;
                 event.preventDefault();
-
+                console.log("_ONBUTTONCLICK MARCUS2")
                 if (
                     $target.hasClass("dropdown-item") ||
                     $target.hasClass("o_submenu_switcher")
                 ) {
                     this.computed_measures_open = !this.computed_measures_open;
+                    console.log("_ONBUTTONCLICK MARCUS3")
                     this._renderComputedMeasures();
                 } else if ($target.hasClass("o_add_computed_measure")) {
+                    console.log("_ONBUTTONCLICK MARCUS4")
                     hideMenu = true;
                     const field1 = this.$buttons_measures_ex
                         .find("#computed_measure_field_1")
@@ -70,6 +76,7 @@ odoo.define("web_pivot_computed_measure.PivotController", function(require) {
                         .find("#computed_measure_operation")
                         .val();
                     if (oper === "custom") {
+                        console.log("_ONBUTTONCLICK MARCUS5")
                         oper = this.$buttons_measures_ex
                             .find("#computed_measure_operation_custom")
                             .val();
@@ -99,8 +106,11 @@ odoo.define("web_pivot_computed_measure.PivotController", function(require) {
 
                 return;
             }
-
+            console.log("_ONBUTTONCLICK MARCUS6")
+            console.log(arguments)
+            console.log(event)
             this._super.apply(this, arguments);
+            
         },
 
         /**
@@ -109,13 +119,18 @@ odoo.define("web_pivot_computed_measure.PivotController", function(require) {
          * @private
          */
         _renderComputedMeasures: function() {
+            console.log("RENDER !!!!!!!!!!!!!!!!!!")
+            console.log(this.$buttons_measures_ex)
+            console.log("RENDER !!!!!!!!!!!!!!!!!!")
             if (this.$buttons_measures_ex && this.$buttons_measures_ex.length) {
                 this.$buttons_measures_ex.remove();
             }
             const measures = _.sortBy(_.pairs(_.omit(this.measures, "__count")), x => {
                 return x[1].string.toLowerCase();
             });
+            console.log("button_measures")
             this.$buttons_measures_ex = $(
+                //~ LOOK HERE !!!!!!!!!!!!!!!!!!!!!!!!!!! Opens the view, doesn't seem to work atm
                 QWeb.render("web_pivot_computed_measure.ExtendedMenu", {
                     isOpen: this.computed_measures_open,
                     debug: config.isDebug(),
@@ -172,6 +187,12 @@ odoo.define("web_pivot_computed_measure.PivotController", function(require) {
          * @param {ChangeEvent} ev
          */
         _onChangeComputedMeasureOperation: function(ev) {
+            console.log("_onChangeComputedMeasureOperation")
+            console.log("_onChangeComputedMeasureOperation")
+            console.log("_onChangeComputedMeasureOperation")
+            console.log("_onChangeComputedMeasureOperation")
+            console.log("_onChangeComputedMeasureOperation")
+            console.log("_onChangeComputedMeasureOperation")
             const $option = $(ev.target.options[ev.target.selectedIndex]);
             if ($(ev.target).val() === "custom") {
                 this.$buttons_measures_ex

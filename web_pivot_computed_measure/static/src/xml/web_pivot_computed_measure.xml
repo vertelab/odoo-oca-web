@@ -35,7 +35,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
             Percentage
         </option>
     </t>
-    <t t-name="web_pivot_computed_measure.ExtendedMenu">
+    <t t-name="web_pivot_computed_measure.ExtendedMenu"> <!--BEGINING-->
         <div role="separator" class="dropdown-divider" />
         <t t-foreach="computed_measures" t-as="cm">
             <a

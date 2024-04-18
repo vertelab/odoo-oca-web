@@ -19,11 +19,23 @@
             <field name="xml_id" position="after">
                 <field name="is_documentation"/>
             </field>
-            <button name="redirect_to_page_manager" position="after">
+            <!--<button name="redirect_to_page_manager" position="after">
+                <button name="export_documentation" class="btn btn-primary" string="Export" type="object"/>
+            </button>-->
+        </field>
+    </record>
+
+    <record id="view_view_form2" model="ir.ui.view">
+        <field name="name">ir.ui.view form (help_online)</field>
+        <field name="inherit_id" ref="website.view_view_form_extend"/>
+        <field name="model">ir.ui.view</field>
+        <field name="arch" type="xml">
+            <button name="website.action_website_pages_list" position="after">
                 <button name="export_documentation" class="btn btn-primary" string="Export" type="object"/>
             </button>
         </field>
     </record>
+
 
     <record id="export_doc_action_server" model="ir.actions.server">
         <field name="name">Export Documentation</field>

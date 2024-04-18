@@ -4,7 +4,7 @@
 
 {
     'name': 'Help Online',
-    'version': '14.0.1.0.0',
+    'version': '16.0.1.0.0',
     'author': "ACSONE SA/NV,Odoo Community Association (OCA)",
     'maintainer': 'Vertel AB',
     'website': 'vertel.se',

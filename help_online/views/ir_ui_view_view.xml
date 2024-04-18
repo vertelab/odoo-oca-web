@@ -19,9 +19,6 @@
             <field name="xml_id" position="after">
                 <field name="is_documentation"/>
             </field>
-            <!--<button name="redirect_to_page_manager" position="after">
-                <button name="export_documentation" class="btn btn-primary" string="Export" type="object"/>
-            </button>-->
         </field>
     </record>
 

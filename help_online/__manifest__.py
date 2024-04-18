@@ -26,5 +26,10 @@
     'qweb': [
         'static/src/xml/help_online.xml',
     ],
+    'assets': {
+        'web.assets_backend': [
+            '/static/src/js/help_online.js',
+        ],
+    },
     'installable': True,
 }

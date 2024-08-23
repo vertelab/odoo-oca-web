@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <!--<template id="assets_backend" name="Help Online Assets Backend" inherit_id="web.assets_backend">
-        <xpath expr="script[@src='/web/static/src/js/control_panel/control_panel.js']" position="after">
-            <link rel="stylesheet" type="text/css" href="/help_online/static/src/css/help_online.css" />
-            <script type="text/javascript" src="/help_online/static/src/js/help_online.js"></script>
-        </xpath>
-    </template>-->
-    
+<!--    <template id="assets_backend" name="Help Online Assets Backend" inherit_id="web.assets_backend">-->
+<!--        <xpath expr="script[@src='/web/static/src/js/control_panel/control_panel.js']" position="after">-->
+<!--            <link rel="stylesheet" type="text/css" href="/help_online/static/src/css/help_online.css" />-->
+<!--            <script type="text/javascript" src="/help_online/static/src/js/help_online.js"></script>-->
+<!--        </xpath>-->
+<!--    </template>-->
+<!--    -->
     <record model="ir.actions.act_window" id="action_website_pages">
         <field name="name">Website Pages</field>
         <field name="res_model">ir.ui.view</field>

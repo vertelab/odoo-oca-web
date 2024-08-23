@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- Copyright 2024 Vertel AB -->
+<template>
+    <t t-name="help_online.FormControlPanel" t-inherit="web.FormControlPanel" t-inherit-mode="extension" owl="1">
+        <xpath expr="//div[hasclass('o_cp_pager')]" position="after">
+            <div>
+                 <Helper />
+            </div>
+        </xpath>
+    </t>
+</template>

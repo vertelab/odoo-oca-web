@@ -1,27 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<templates id="template" xml:space="preserve">
-    
-    <t t-name='HelpOnline.Button'>
-        <div class='hidden-xs btn-group btn-group-sm o_help_online_buttons'>
-            <t t-if='url_info'>
-                <a t-att-class="'fa fa-question-circle btn btn-icon o_help_online_button ' + (url_info.exists? '': 'o_help_online_not_found')"
-                   t-att-title='url_info.title' t-att-href='url_info.url'
-                   target='_blank'></a>
-            </t>
-        </div>
+<template>
+    <t t-name="help_online.Button" owl="1">
+        <nav class="oe_helper" aria-label="Helper" aria-atomic="true">
+            <button class="fa fa-question-circle btn btn-icon" aria-label="Helper" t-on-click="onClickHelper"/>
+        </nav>
     </t>
-
-<!--
-    <t t-extend="ControlPanel">
-        <t t-jquery="nav.o_cp_switch_buttons" t-operation="after">
-            <t t-call='HelpOnline.ButtonsContainer' />
-        </t>
-    </t>
-
-    <t t-extend="X2ManyControlPanel">
-        <t t-jquery="div.o_cp_pager" t-operation="after">
-            <t t-call='HelpOnline.ButtonsContainer' />
-        </t>
-    </t>
--->
-</templates>
+</template>

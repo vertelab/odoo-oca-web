@@ -23,12 +23,25 @@
         'views/help_online_view.xml',
         'data/ir_config_parameter_data.xml',
     ],
-    'qweb': [
-        'static/src/xml/help_online.xml',
-    ],
     'assets': {
         'web.assets_backend': [
-            '/static/src/js/help_online.js',
+            "help_online/static/src/xml/help_online.xml",
+
+            (
+                "after",
+                "web/static/src/search/control_panel/control_panel.js",
+                "help_online/static/src/**/*.js",
+            ),
+            (
+                "after",
+                "web/static/src/search/control_panel/control_panel.xml",
+                "help_online/static/src/xml/control_panel.xml",
+            ),
+            (
+                "after",
+                "web/static/src/views/form/control_panel/form_control_panel.xml",
+                "help_online/static/src/xml/form_control_panel.xml",
+            ),
         ],
     },
     'installable': True,

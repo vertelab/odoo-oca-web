@@ -31,8 +31,8 @@ class ExportHelpWizard(models.TransientModel):
     data = fields.Binary('XML', readonly=True)
     export_filename = fields.Char('Export XML Filename', size=128)
 
-    binary = Binary()
-    websiteBinary = WebsiteBinary()
+    # binary = Binary()
+    # websiteBinary = WebsiteBinary()
 
     img_url_map = Map([
         Rule('/web/image'),

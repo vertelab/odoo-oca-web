@@ -1,97 +1,127 @@
-odoo.define('oca.HelpOnline', function (require) {
-    "use strict";
+/** @odoo-module **/
+/* Copyright 2024 Vertel AB */
 
-    var core = require('web.core');
-    var QWeb = core.qweb;
-    var _t = core._t;
-    var BasicController = require('web.BasicController');
-    var ControlPanel = require('web.ControlPanel');
-    var Dialog = require('web.Dialog');
-    var utils = require('web.utils');
-    const rpc = require("web.rpc");
-    var time = require('web.time');
-    
-    ControlPanel.patch('oca.HelpOnline.monkeypatch', T =>
-        class extends T {
-                _formatFields(fields) {
-                    var ret = super._formatFields(fields);
-                    var self = this;
-                    let view = this.props.view || {};
-                    if ($(self.el).find('div.o_help_online_buttons').length == 0 && view.model) {
-                        var data = {
-                            "jsonrpc": "2.0",
-                            "method": "call",
-                            "params": {
-                                "args": [
-                                    view.model, view.type
-                                ],
-                                "model": 'help.online',
-                                "method": 'get_page_url',
-                                "kwargs": {
-                                    "context": odoo.session_info.user_context
-                                }
-                            },
-                        //this is how odoo core calculates id. Yes, it is indeed dumb
-                        "id": Math.floor(Math.random() * 1000 * 1000 * 1000)
-                        };
-                        var url = "/web/dataset/call_kw/help.online/get_page_url";
-                        //we have to make a manual jquery call because of odoo core issues with rpc
-                        $.ajax(url, _.extend({}, {}, {
-                            url: url,
-                            dataType: 'json',
-                            type: 'POST',
-                            data: JSON.stringify(data, time.date_to_utc),
-                            contentType: 'application/json'
-                        })).then(function(result) {
-                            console.log(result);
-                            if (result.result && ! _.isEmpty(result.result)) {
-                                var $helpButton =  self.render_help_button(result.result);
-                                // update the control panel with the new help button
-                                console.log($helpButton);
-                                $(self.el).find('div.o_cp_bottom_right').append($helpButton);
-                            }
-                        });
-                    }
-                   return ret
+import {Component} from "@odoo/owl";
+import core, { _t } from 'web.core';
+import {useDebounced} from "@web/core/utils/timing";
+import {useService} from "@web/core/utils/hooks";
+import Dialog from 'web.Dialog';
+import ajax from 'web.ajax';
+var time = require('web.time');
+var session = require('web.session');
+
+
+export class Helper extends Component {
+    setup() {
+        super.setup();
+        this.action = useService("action");
+        this.orm = useService("orm");
+    }
+
+    page_data() {
+        let view = this.props.view || {};
+
+        const data = {
+            "jsonrpc": "2.0",
+            "method": "call",
+            "params": {
+                "args": [
+                    view.model, view.type
+                ],
+                "model": 'help.online',
+                "method": 'get_page_url',
+                "kwargs": {
+                    "context": session.user_context
                 }
+            },
+            //this is how odoo core calculates id. Yes, it is indeed dumb
+            "id": Math.floor(Math.random() * 1000 * 1000 * 1000)
+        };
 
-                render_help_button(url_info) {
-                    console.log("url info: ", url_info);
-                    var $helpButton = $(QWeb.render("HelpOnline.Button", {'url_info': url_info}));
-                    $helpButton.tooltip();
-                    if (url_info.exists === false) {
-                        console.log("im true");
-                        $helpButton.on('click', function (event) {
-                            console.log("hej", arguments);
-                            var evt = event;
-                            evt.preventDefault();
-                            var self = this;
-                            Dialog.confirm(
-                                self,
-                                _t('Page does not exist. Do you want to create?'),
-                                {confirm_callback:  function() {
-                                    var form = $("<form></form>");
-                                    let csrf_input = $('<input name="csrf_token"/>');
-                                    csrf_input.val(core.csrf_token);
-                                    form.append(csrf_input);
-                                    form.attr({
-                                            id     : "formform",
-                                            // The location given in the link itself
-                                            action : evt.target.href, 
-                                            method : "POST",
-                                            // Open in new window/tab
-                                            target : evt.target.target
-                                    });
-                                    $("body").append(form);
-                                    $("#formform").submit();
-                                    $("#formform").remove();
-                                    return false;
-                                }
-                            });
-                        });
-                    }
-                    return $helpButton;
-            }
+        return data
+    }
+
+    viewInfo(url) {
+        // Extract the part after the hash (#)
+        let hashPart = url.split('#')[1];
+
+        // Split the parameters
+        let params = new URLSearchParams(hashPart);
+
+        // Get the model and view_type
+        let model = params.get('model');
+        let viewType = params.get('view_type');
+
+        return {model, viewType}
+    }
+
+    async mCall() {
+        let view = this.props.view || {};
+
+        const url = window.location.href;
+        const {model, viewType} = this.viewInfo(url);
+
+        return ajax.jsonRpc('/web/dataset/call_kw', 'call', {
+            model: 'help.online',
+            method: 'get_page_url',
+            args: [{ }],
+            kwargs: {
+                'model': model,
+                'view_type': viewType,
+            },
+        }).then(function (data) {
+            return data
         })
-})
+    }
 
+    async onClickHelper() {
+        const data = await this.mCall();
+        if (data && !data.exists) {
+            await this.triggerHelp(data.url)
+        }
+        window.open(data.url, '_blank');
+    }
+
+    async triggerHelp(url) {
+        return new Promise(resolve => {
+            Dialog.confirm(
+                this,
+                this.env._t("Page does not exist. Do you want to create?"),
+                { confirm_callback: async() => {
+                    await this.formElement(url);
+                }},
+            );
+        });
+    }
+
+    async formElement(url) {
+        // Create a form element
+        const form = $('<form>', {
+            id: 'formform',
+            action: url,
+            method: 'POST',
+            target: '_blank'
+        });
+
+        // Create and append the CSRF token input
+        const csrfInput = $('<input>', {
+            name: 'csrf_token',
+            value: core.csrf_token
+        });
+
+        form.append(csrfInput);
+
+        // Append the form to the body and submit it
+        $('body').append(form);
+        form.submit();
+        form.remove();
+    }
+}
+
+Object.assign(Helper, {
+    template: "help_online.Button",
+    props: {
+        searchModel: {type: Object, optional: true},
+        pagerProps: {type: Object, optional: true},
+    },
+});

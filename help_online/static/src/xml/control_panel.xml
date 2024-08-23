@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- Copyright 2024 Vertel AB -->
+<template>
+    <t t-name="help_online.ControlPanel.Regular" t-inherit="web.ControlPanel.Regular" t-inherit-mode="extension" owl="1">
+        <xpath expr="//nav[hasclass('o_cp_switch_buttons')]" position="after">
+            <div>
+                 <Helper />
+            </div>
+        </xpath>
+    </t>
+
+    <t t-name="help_online.ControlPanel.Small" t-inherit="web.ControlPanel.Small" t-inherit-mode="extension" owl="1">
+        <xpath expr="//nav[hasclass('o_cp_switch_buttons')]" position="after">
+            <div>
+                 <Helper />
+            </div>
+        </xpath>
+    </t>
+</template>

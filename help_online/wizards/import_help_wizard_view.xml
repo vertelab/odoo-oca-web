@@ -6,13 +6,11 @@
         <field name="type">form</field>
         <field name="arch" type="xml">
             <form string="Import Help Data">
-                <group>
-                    <p>
+                <p>
                     This wizard allow you to import QWeb views
                     related to help online. The required file format is an Odoo
                     data xml file.
-                    </p>
-                </group>
+                </p>
                 <group>
                     <field name="source_file"/>
                 </group>
@@ -21,7 +19,7 @@
                         <button name="import_help"
                             string="Import"
                             type="object"
-                            icon="gtk-execute"
+                            icon="fa-arrow-up"
                             class="oe_highlight" />
                         or
                     </span>

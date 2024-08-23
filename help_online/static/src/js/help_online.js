@@ -98,7 +98,7 @@ export class Helper extends Component {
         // Create a form element
         const form = $('<form>', {
             id: 'formform',
-            action: url,
+            action: url + '?redirect=true',
             method: 'POST',
             target: '_blank'
         });

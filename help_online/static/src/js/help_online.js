@@ -76,22 +76,34 @@ export class Helper extends Component {
             return null;
         }
 
-        try {
-            return await rpc('/web/dataset/call_kw', {
-                model: 'help.online',
-                method: 'get_page_url',
-                args: [[]],
-                kwargs: {
-                    'model': model,
-                    'view_type': viewType,
-                    'user_id': user.userId,
-                    'context': session.user_context || {},
-                },
-            });
-        } catch (error) {
-            console.error("RPC call failed:", error);
-            return null;
-        }
+        return await rpc('/web/dataset/call_kw', {
+            model: 'help.online',
+            method: 'get_page_url',
+            args: [[]],
+            kwargs: {
+                'model': model,
+                'view_type': viewType,
+                'user_id': user.userId,
+                'context': session.user_context || {},
+            },
+        });
+
+//        try {
+//            return await rpc('/web/dataset/call_kw', {
+//                model: 'help.online',
+//                method: 'get_page_url',
+//                args: [[]],
+//                kwargs: {
+//                    'model': model,
+//                    'view_type': viewType,
+//                    'user_id': user.userId,
+//                    'context': session.user_context || {},
+//                },
+//            });
+//        } catch (error) {
+//            console.error("RPC call failed:", error);
+//            return null;
+//        }
     }
 
     async onClickHelper() {
@@ -102,15 +114,19 @@ export class Helper extends Component {
             return;
         }
 
-        if (data && !data.exists) {
-            await this.triggerHelp(data.url);
+        console.log("Page data:", data); // ← Added debug log
+
+        // If page exists, just open it
+        if (data.exists) {  // ← Changed logic here
+            console.log("Page exists, opening:", data.url);
+            window.open(data.url, '_blank');
+            return;  // ← Added return to stop execution
         }
 
-        if (data.url) {
-            window.open(data.url, '_blank');
-        } else {
-            console.error("No URL provided in response");
-        }
+        // If page doesn't exist, ask user if they want to create it
+        console.log("Page doesn't exist, asking user to create");
+        await this.triggerHelp(data.url);
+        // ← Removed the "always open URL" part
     }
 
     async triggerHelp(url) {

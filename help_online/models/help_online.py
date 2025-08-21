@@ -2,7 +2,8 @@
 # Copyright 2014 ACSONE SA/NV (<http://acsone.eu>)
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
-from odoo import models, exceptions, api
+from odoo import models, api
+from odoo.exceptions import AccessError, UserError, ValidationError
 from odoo.tools.translate import _
 
 
@@ -14,7 +15,7 @@ class HelpOnline(models.TransientModel):
         parameter_model = self.env['ir.config_parameter'].sudo()
         page_prefix = parameter_model.get_param('help_online_page_prefix', False)
         if not page_prefix:
-            raise exceptions.Warning(_('No page prefix parameter specified !'))
+            raise ValidationError(_('No page prefix parameter specified !'))
         name = '%s-%s' % (page_prefix, model.replace('.', '-'))
         return name
 
@@ -26,7 +27,9 @@ class HelpOnline(models.TransientModel):
     def get_page_url(self, model, view_type, user_id, domain=None, context=None):
         user_model = self.env['res.users'].browse(user_id)
         if not user_model.has_group('help_online.help_online_group_reader'):
-            return {}
+            raise AccessError(_(
+                'You do not have permission to access help pages. '
+                'Please contact your administrator to assign you the "Help reader" group.'))
 
         ir_model = self.env['ir.model']
         description = self.env[model]._description
@@ -46,4 +49,7 @@ class HelpOnline(models.TransientModel):
             title = _('Create Help page for %s') % description
             return {'url': 'website/add/%s' % name, 'title': title, 'exists': False}
         else:
-            return {}
+            raise AccessError(_(
+                'Page does not exist and you do not have permission to create help pages. '
+                'Please contact your administrator to assign you the "Help writer" group.'
+            ))

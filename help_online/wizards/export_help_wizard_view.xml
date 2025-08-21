@@ -7,8 +7,7 @@
         <field name="arch" type="xml">
             <form string="Export Help Data">
                 <group colspan="2">
-                    <field name="export_filename"
-                           invisible="1"/>
+                    <field name="export_filename" invisible="1"/>
                 </group>
                 <p>
                     This wizard allow you to export all QWeb views
@@ -16,18 +15,11 @@
                     data xml file.
                 </p>
                 <group>
-                    <field name="data"
-                           nolabel="1"
-                           readonly="1"
-                           filename="export_filename" />
+                    <field name="data" nolabel="1" readonly="1" filename="export_filename" />
                 </group>
                 <footer>
-                    <span name="go-wizard" attrs="{'invisible': [('export_filename', '!=', False)]}">
-                        <button name="export_help"
-                            string="Export"
-                            type="object"
-                            icon="fa-arrow-up"
-                            class="oe_highlight" />
+                    <span name="go-wizard" invisible="export_filename != False">
+                        <button name="export_help" string="Export" type="object" icon="fa-arrow-up" class="oe_highlight" />
                         or
                     </span>
                     <button string="Close" class="oe_link" special="cancel" />

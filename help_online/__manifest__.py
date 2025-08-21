@@ -4,7 +4,7 @@
 
 {
     'name': 'Help Online',
-    'version': '16.0.1.0.0',
+    'version': '18.0.1.0.0',
     'author': "ACSONE SA/NV,Odoo Community Association (OCA)",
     'maintainer': 'Vertel AB',
     'website': 'vertel.se',
@@ -26,7 +26,6 @@
     'assets': {
         'web.assets_backend': [
             "help_online/static/src/xml/help_online.xml",
-
             (
                 "after",
                 "web/static/src/search/control_panel/control_panel.js",
@@ -36,11 +35,6 @@
                 "after",
                 "web/static/src/search/control_panel/control_panel.xml",
                 "help_online/static/src/xml/control_panel.xml",
-            ),
-            (
-                "after",
-                "web/static/src/views/form/control_panel/form_control_panel.xml",
-                "help_online/static/src/xml/form_control_panel.xml",
             ),
         ],
     },

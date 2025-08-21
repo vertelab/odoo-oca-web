@@ -12,7 +12,7 @@ from werkzeug.routing import Map, Rule
 from lxml import etree as ET
 from odoo import models, fields, api, exceptions
 from odoo.tools.translate import _
-from odoo.addons.web.controllers.main import Binary
+from odoo.addons.web.controllers.binary import Binary
 from odoo.addons.website.controllers.main import WebsiteBinary
 
 _logger = logging.getLogger(__name__)
@@ -20,8 +20,7 @@ _logger = logging.getLogger(__name__)
 PAGE_PREFIX_PARAMETER = 'help_online_page_prefix'
 TEMPLATE_PREFIX_PARAMETER = 'help_online_template_prefix'
 AUTOBACKUP_PARAMETER = 'help_online_autobackup_path'
-HELP_ONLINE_SNIPPET_IMAGE_PATH = '/help_online/static/src/'\
-                                 'img/snippet/snippet_thumbs.png'
+HELP_ONLINE_SNIPPET_IMAGE_PATH = '/help_online/static/src/img/snippet/snippet_thumbs.png'
 
 
 class ExportHelpWizard(models.TransientModel):
@@ -93,33 +92,21 @@ class ExportHelpWizard(models.TransientModel):
                     if _id and model:
                         _id, _, unique = str(_id).partition('_')
                         image = self.env[model].browse(int(_id))
-                if (not image or
-                    not image.exists() or
-                        image._name != img_model):
+                if not image or not image.exists() or image._name != img_model:
                     raise exceptions.UserError(
-                        _('Only images from ir.attachment are supported when '
-                          'exporting help pages'))
+                        _('Only images from ir.attachment are supported when exporting help pages')
+                    )
                 exported_data = image.export_data(
-                    ['id',
-                     'datas',
-                     'datas_fname',
-                     'name',
-                     'res_model',
-                     'mimetype'],
-                    raw_data=False)['datas'][0]
+                    ['id', 'datas', 'datas_fname', 'name', 'res_model', 'mimetype'], raw_data=False
+                )['datas'][0]
                 xml_id = exported_data[0]
                 new_src = '/web/image/%s' % xml_id
                 img_elem.attrib['src'] = new_src
                 if xml_id in exported_resources:
                     continue
-                img_node = ET.SubElement(
-                    data_node,
-                    'record',
-                    attrib={'id': xml_id,
-                            'model': image._name})
-                field_node = ET.SubElement(img_node,
-                                           'field',
-                                           attrib={'name': 'datas'})
+                img_node = ET.SubElement(data_node, 'record', attrib={'id': xml_id, 'model': image._name}
+                )
+                field_node = ET.SubElement(img_node, 'field', attrib={'name': 'datas'})
                 field_node.text = str(exported_data[1])
                 field_node = ET.SubElement(img_node,
                                            'field',
@@ -168,8 +155,7 @@ class ExportHelpWizard(models.TransientModel):
                 trail = href.split(page_url, 1)[1]
                 a_elem.attrib['href'] = page_url + trail
 
-    def _generate_snippet_from_template(self, page_node,
-                                        template_id, template_prefix):
+    def _generate_snippet_from_template(self, page_node, template_id, template_prefix):
         """
             Generate a website snippet from a template
         """

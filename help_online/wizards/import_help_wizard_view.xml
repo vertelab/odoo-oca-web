@@ -15,12 +15,8 @@
                     <field name="source_file"/>
                 </group>
                 <footer>
-                    <span name="go-wizard" attrs="{'invisible': [('source_file', '=', False)]}">
-                        <button name="import_help"
-                            string="Import"
-                            type="object"
-                            icon="fa-arrow-up"
-                            class="oe_highlight" />
+                    <span name="go-wizard" invisible="not source_file">
+                        <button name="import_help" string="Import" type="object" icon="fa-arrow-up" class="oe_highlight" />
                         or
                     </span>
                     <button string="Close" class="oe_link" special="cancel" />

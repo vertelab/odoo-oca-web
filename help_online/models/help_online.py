@@ -23,8 +23,8 @@ class HelpOnline(models.TransientModel):
         return website.search_pages(needle=name, limit=limit)
 
     # @api.model
-    def get_page_url(self, model, view_type, domain=None, context=None):
-        user_model = self.env['res.users']
+    def get_page_url(self, model, view_type, user_id, domain=None, context=None):
+        user_model = self.env['res.users'].browse(user_id)
         if not user_model.has_group('help_online.help_online_group_reader'):
             return {}
 

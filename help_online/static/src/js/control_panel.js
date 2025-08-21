@@ -11,10 +11,11 @@ ControlPanel.components = {
     Helper
 }
 
-patch(ControlPanel.prototype, "help_online.ControlPanel", {
-    setup() {
-        this._super(...arguments);
-        this.forbiddenSubTypes = ["base_settings"];
+const originalSetup = ControlPanel.prototype.setup;
 
+patch(ControlPanel.prototype, {
+    setup() {
+        originalSetup.call(this, ...arguments);
+        this.forbiddenSubTypes = ["base_settings"];
     },
 });

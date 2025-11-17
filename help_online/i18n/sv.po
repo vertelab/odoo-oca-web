@@ -4,23 +4,23 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 14.0-20211230\n"
+"Project-Id-Version: Odoo Server 18.0-20251117\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-17 12:22+0000\n"
-"PO-Revision-Date: 2022-02-17 14:06+0100\n"
+"POT-Creation-Date: 2025-11-17 14:31+0000\n"
+"PO-Revision-Date: 2025-11-17 15:36+0100\n"
+"Last-Translator: \n"
 "Language-Team: \n"
+"Language: sv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.3\n"
-"Last-Translator: \n"
-"Language: sv\n"
+"X-Generator: Poedit 3.4.2\n"
 
 #. module: help_online
 #: model_terms:ir.ui.view,arch_db:help_online.view_attachment_simplified_form
 msgid "Attachments"
-msgstr "Bifogade filer"
+msgstr "Bilagor"
 
 #. module: help_online
 #: model_terms:ir.ui.view,arch_db:help_online.export_help_wizard_view
@@ -29,8 +29,14 @@ msgid "Close"
 msgstr "Stäng"
 
 #. module: help_online
+#. odoo-javascript
+#: code:addons/help_online/static/src/js/help_online.js:0
+msgid "Create Help Page"
+msgstr "Skapa hjälpsida"
+
+#. module: help_online
+#. odoo-python
 #: code:addons/help_online/models/help_online.py:0
-#, python-format
 msgid "Create Help page for %s"
 msgstr "Skapa hjälpsida för %s"
 
@@ -39,48 +45,46 @@ msgstr "Skapa hjälpsida för %s"
 #: model:ir.model.fields,field_description:help_online.field_help_online__create_uid
 #: model:ir.model.fields,field_description:help_online.field_import_help_wizard__create_uid
 msgid "Created by"
-msgstr "Skapat av"
+msgstr "Skapad av"
 
 #. module: help_online
 #: model:ir.model.fields,field_description:help_online.field_export_help_wizard__create_date
 #: model:ir.model.fields,field_description:help_online.field_help_online__create_date
 #: model:ir.model.fields,field_description:help_online.field_import_help_wizard__create_date
 msgid "Created on"
-msgstr "Skapat den"
+msgstr "Skapad på"
 
 #. module: help_online
 #: model:ir.model.fields,field_description:help_online.field_export_help_wizard__display_name
 #: model:ir.model.fields,field_description:help_online.field_help_online__display_name
 #: model:ir.model.fields,field_description:help_online.field_import_help_wizard__display_name
-#: model:ir.model.fields,field_description:help_online.field_ir_model_data__display_name
-#: model:ir.model.fields,field_description:help_online.field_ir_ui_view__display_name
 msgid "Display Name"
 msgstr "Visningsnamn"
 
 #. module: help_online
 #: model_terms:ir.ui.view,arch_db:help_online.export_help_wizard_view
-#: model_terms:ir.ui.view,arch_db:help_online.view_view_form
+#: model_terms:ir.ui.view,arch_db:help_online.view_view_form2
 msgid "Export"
-msgstr "Exportera"
+msgstr "Export"
 
 #. module: help_online
+#. odoo-python
 #: code:addons/help_online/models/ir_ui_view.py:0
 #: model:ir.actions.server,name:help_online.export_doc_action_server
-#, python-format
 msgid "Export Documentation"
-msgstr "Exportera dokumentation"
+msgstr "Exportdokumentation"
 
 #. module: help_online
+#. odoo-python
 #: code:addons/help_online/wizards/export_help_wizard.py:0
 #: model:ir.actions.act_window,name:help_online.action_export_help_wizard
-#, python-format
 msgid "Export Help"
 msgstr "Exportera Hjälp"
 
 #. module: help_online
 #: model_terms:ir.ui.view,arch_db:help_online.export_help_wizard_view
 msgid "Export Help Data"
-msgstr "Exportera Hjälpdata"
+msgstr "Exportera hjälpdata"
 
 #. module: help_online
 #: model:ir.model,name:help_online.model_export_help_wizard
@@ -91,7 +95,7 @@ msgstr "Exportera Onlinehjälp"
 #. module: help_online
 #: model:ir.model.fields,field_description:help_online.field_export_help_wizard__export_filename
 msgid "Export XML Filename"
-msgstr "Exportera XML filnamn"
+msgstr "Exportera XML-filnamn"
 
 #. module: help_online
 #: model_terms:ir.ui.view,arch_db:help_online.view_attachment_simplified_form
@@ -106,10 +110,10 @@ msgid "Help Online"
 msgstr "Onlinehjälp"
 
 #. module: help_online
+#. odoo-python
 #: code:addons/help_online/models/help_online.py:0
-#, python-format
 msgid "Help on %s"
-msgstr "Hjälp för %s"
+msgstr "Hjälp om %s"
 
 #. module: help_online
 #: model:res.groups,name:help_online.help_online_group_reader
@@ -122,18 +126,22 @@ msgid "Help writer"
 msgstr "Hjälpskrivare"
 
 #. module: help_online
+#. odoo-javascript
+#: code:addons/help_online/static/src/xml/help_online.xml:0
+msgid "Helper"
+msgstr "Hjälpare"
+
+#. module: help_online
 #: model:ir.model.fields,field_description:help_online.field_export_help_wizard__id
 #: model:ir.model.fields,field_description:help_online.field_help_online__id
 #: model:ir.model.fields,field_description:help_online.field_import_help_wizard__id
-#: model:ir.model.fields,field_description:help_online.field_ir_model_data__id
-#: model:ir.model.fields,field_description:help_online.field_ir_ui_view__id
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 #. module: help_online
 #: model_terms:ir.ui.view,arch_db:help_online.import_help_wizard_view
 msgid "Import"
-msgstr "Importera"
+msgstr "Import"
 
 #. module: help_online
 #: model:ir.actions.act_window,name:help_online.action_import_help_wizard
@@ -143,7 +151,7 @@ msgstr "Importera Hjälp"
 #. module: help_online
 #: model_terms:ir.ui.view,arch_db:help_online.import_help_wizard_view
 msgid "Import Help Data"
-msgstr "Importera Hjälpdata"
+msgstr "Importera hjälpdata"
 
 #. module: help_online
 #: model:ir.ui.menu,name:help_online.menu_help_import
@@ -152,25 +160,17 @@ msgstr "Importera Onlinehjälp"
 
 #. module: help_online
 #: model:ir.model.fields,field_description:help_online.field_ir_ui_view__is_documentation
+#: model:ir.model.fields,field_description:help_online.field_website_controller_page__is_documentation
 #: model:ir.model.fields,field_description:help_online.field_website_page__is_documentation
 msgid "Is Documentation"
 msgstr "Är dokumentation"
-
-#. module: help_online
-#: model:ir.model.fields,field_description:help_online.field_export_help_wizard____last_update
-#: model:ir.model.fields,field_description:help_online.field_help_online____last_update
-#: model:ir.model.fields,field_description:help_online.field_import_help_wizard____last_update
-#: model:ir.model.fields,field_description:help_online.field_ir_model_data____last_update
-#: model:ir.model.fields,field_description:help_online.field_ir_ui_view____last_update
-msgid "Last Modified on"
-msgstr "Senast ändrad"
 
 #. module: help_online
 #: model:ir.model.fields,field_description:help_online.field_export_help_wizard__write_uid
 #: model:ir.model.fields,field_description:help_online.field_help_online__write_uid
 #: model:ir.model.fields,field_description:help_online.field_import_help_wizard__write_uid
 msgid "Last Updated by"
-msgstr "Senast uppdaterad"
+msgstr "Senast uppdaterad av"
 
 #. module: help_online
 #: model:ir.model.fields,field_description:help_online.field_export_help_wizard__write_date
@@ -182,32 +182,41 @@ msgstr "Senast uppdaterad den"
 #. module: help_online
 #: model:ir.model,name:help_online.model_ir_model_data
 msgid "Model Data"
-msgstr "Modelldata"
+msgstr "Uppgifter om modellen"
 
 #. module: help_online
+#. odoo-python
 #: code:addons/help_online/wizards/export_help_wizard.py:0
-#, python-format
 msgid "No data to export !"
-msgstr "Inget data att exportera!"
+msgstr "Inga data att exportera!"
 
 #. module: help_online
+#. odoo-python
 #: code:addons/help_online/models/help_online.py:0
-#, python-format
 msgid "No page prefix parameter specified !"
-msgstr "Ingen sidoprefix-parameter specificerad !"
+msgstr "Ingen parameter för sidprefix har angetts!"
 
 #. module: help_online
+#. odoo-python
 #: code:addons/help_online/wizards/export_help_wizard.py:0
-#, python-format
 msgid "Only images from ir.attachment are supported when exporting help pages"
 msgstr "Endast bilder från ir.attachment stöds vid export av hjälpsidor"
 
 #. module: help_online
-#. openerp-web
+#. odoo-python
+#: code:addons/help_online/models/help_online.py:0
+msgid ""
+"Page does not exist and you do not have permission to create help pages. "
+"Please contact your administrator to assign you the \"Help writer\" group."
+msgstr ""
+"Sidan finns inte och du har inte behörighet att skapa hjälpsidor. Kontakta "
+"din administratör så att du kan tilldelas gruppen \"Help writer\"."
+
+#. module: help_online
+#. odoo-javascript
 #: code:addons/help_online/static/src/js/help_online.js:0
-#, python-format
-msgid "Page does not exist. Do you want to create?"
-msgstr "Sidan existerar inte. Vill du skapa den?"
+msgid "Page does not exist. Do you want to create it?"
+msgstr "Sidan finns inte. Vill du skapa den?"
 
 #. module: help_online
 #: model:ir.model.fields,field_description:help_online.field_import_help_wizard__source_file
@@ -221,9 +230,10 @@ msgid ""
 "                    related to help online. The result will be an Odoo\n"
 "                    data xml file."
 msgstr ""
-"Denna wizard låter dig exportera alla QWeb vyer\n"
-"                    relaterade till onlinehjälp. Resultatet blir en Odoo\n"
-"                    xml datafil."
+"Med den här guiden kan du exportera alla QWeb-vyer\n"
+"                    som är relaterade till hjälp online. Resultatet kommer "
+"att vara en Odoo\n"
+"                    data xml-fil."
 
 #. module: help_online
 #: model_terms:ir.ui.view,arch_db:help_online.import_help_wizard_view
@@ -233,16 +243,16 @@ msgid ""
 "Odoo\n"
 "                    data xml file."
 msgstr ""
-"Denna wizard låter dig importera alla QWeb vyer\n"
-"                    relaterade till onlinehjälp. Det erfordrade filformatet "
+"Med den här guiden kan du importera QWeb-vyer\n"
+"                    relaterade till hjälp online. Det filformat som krävs "
 "är en Odoo\n"
-"                    xml datafil."
+"                    data xml-fil."
 
 #. module: help_online
+#. odoo-python
 #: code:addons/help_online/wizards/export_help_wizard.py:0
-#, python-format
 msgid "Unable to write autobackup file in given directory: %s"
-msgstr "Lyckas ej skriva autobackup-filen i den angivna katalogen: %s"
+msgstr "Det gick inte att skriva autobackup-filen i den angivna katalogen: %s"
 
 #. module: help_online
 #: model:ir.model,name:help_online.model_ir_ui_view
@@ -252,7 +262,7 @@ msgstr "Vy"
 #. module: help_online
 #: model_terms:ir.ui.view,arch_db:help_online.view_view_search
 msgid "Website Page"
-msgstr "Webbplats-sida"
+msgstr "Webbplats Sida"
 
 #. module: help_online
 #: model:ir.actions.act_window,name:help_online.action_website_pages
@@ -263,12 +273,22 @@ msgstr "Webbplats-sidor"
 #. module: help_online
 #: model:ir.model.fields,field_description:help_online.field_export_help_wizard__data
 msgid "XML"
+msgstr "XML"
+
+#. module: help_online
+#. odoo-python
+#: code:addons/help_online/models/help_online.py:0
+msgid ""
+"You do not have permission to access help pages. Please contact your "
+"administrator to assign you the \"Help reader\" group."
 msgstr ""
+"Du har inte behörighet att komma åt hjälpsidor. Kontakta din administratör "
+"så att du kan tilldelas gruppen \"Help reader\"."
 
 #. module: help_online
 #: model:ir.model,name:help_online.model_import_help_wizard
 msgid "import.help.wizard"
-msgstr ""
+msgstr "import.hjälp.guide"
 
 #. module: help_online
 #: model_terms:ir.ui.view,arch_db:help_online.export_help_wizard_view

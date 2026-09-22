@@ -7,7 +7,7 @@
     'version': '18.0.1.0.0',
     'author': "ACSONE SA/NV,Odoo Community Association (OCA)",
     'maintainer': 'Vertel AB',
-    'website': 'vertel.se',
+    'website': 'https://vertel.se/apps/odoo-oca-web/help_online',
     'license': 'AGPL-3',
     'category': 'Documentation',
     'depends': [

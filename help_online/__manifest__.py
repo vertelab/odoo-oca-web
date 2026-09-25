@@ -4,6 +4,19 @@
 
 {
     'name': 'Help Online',
+    'summary': "Adds an online help button to the user menu.",
+    'description': '''
+Help Online
+===========
+
+    Adds an online help button to the user menu.
+
+    Features:
+
+        - Guided Wizards: Step-by-step dialogs for data entry.
+        - UI Integration: Extends 2 view(s) in the Odoo interface.
+        - Extends Odoo: Builds on help.online.
+    ''',
     'version': '18.0.1.0.0',
     'author': "ACSONE SA/NV,Odoo Community Association (OCA)",
     'maintainer': 'Vertel AB',

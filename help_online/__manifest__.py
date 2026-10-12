@@ -17,7 +17,7 @@ Help Online
         - UI Integration: Extends 2 view(s) in the Odoo interface.
         - Extends Odoo: Builds on help.online.
     ''',
-    'version': '18.0.1.0.0',
+    'version': '18.0.1.0.1',
     'author': "ACSONE SA/NV,Odoo Community Association (OCA)",
     'maintainer': 'Vertel AB',
     'website': 'https://vertel.se/apps/odoo-oca-web/help_online',
